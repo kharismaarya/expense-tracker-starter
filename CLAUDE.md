@@ -8,9 +8,18 @@ This is a training starter for a Claude Code course. It **intentionally** contai
 
 ## Stack & commands
 
-- React 19 + Vite 7, plain JavaScript (JSX), npm. The whole app currently lives in `src/App.jsx`.
+- React 19 + Vite 7, plain JavaScript (JSX), npm.
 - `npm run dev` — dev server at http://localhost:5173
 - There is no test suite. Verify changes with `npm run lint` and `npm run build`.
+
+## Architecture
+
+- `App.jsx` owns the `transactions` state (in-memory only, no persistence) and the `categories` list, and passes them down as props to:
+  - `Summary` — derives income/expense/balance totals from `transactions`.
+  - `TransactionForm` — owns its own input state; calls `onAdd(transaction)` on submit.
+  - `TransactionList` — owns the type/category filter state and renders the table.
+- Transaction `amount` is always a number — convert form input with `Number()` before storing.
+- Components are flat in `src/` (one default-exported function component per file); all styles live in `App.css`.
 
 ## Git
 
