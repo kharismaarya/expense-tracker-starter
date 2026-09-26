@@ -17,7 +17,7 @@ This is a training starter for a Claude Code course. It **intentionally** contai
 - `App.jsx` owns the `transactions` state (in-memory only, no persistence) and the `categories` list, and passes them down as props to:
   - `Summary` — derives income/expense/balance totals from `transactions`.
   - `TransactionForm` — owns its own input state; calls `onAdd(transaction)` on submit.
-  - `TransactionList` — owns the type/category filter state and renders the table.
+  - `TransactionList` — owns the type/category filter state and renders the table; each row's Delete button confirms, then calls `onDelete(id)`.
 - Transaction `amount` is always a number — convert form input with `Number()` before storing.
 - Components are flat in `src/` (one default-exported function component per file); all styles live in `App.css`.
 
