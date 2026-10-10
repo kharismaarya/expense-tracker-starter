@@ -10,7 +10,7 @@ This is a training starter for a Claude Code course. It **intentionally** contai
 
 - React 19 + Vite 7, plain JavaScript (JSX), npm.
 - `npm run dev` — dev server at http://localhost:5173
-- There is no test suite. Verify changes with `npm run lint` and `npm run build`.
+- There is no test suite. Verify changes with `npm run lint` and `npm run build`, or run `/verify` to also check that the dev server serves the app. A hook already lints every `.js`/`.jsx` file Claude edits.
 
 ## Architecture
 
@@ -18,9 +18,10 @@ This is a training starter for a Claude Code course. It **intentionally** contai
   - `Summary` — derives income/expense/balance totals from `transactions`.
   - `TransactionForm` — owns its own input state; calls `onAdd(transaction)` on submit.
   - `TransactionList` — owns the type/category filter state and renders the table; each row's Delete button confirms, then calls `onDelete(id)`.
-- Transaction `amount` is always a number — convert form input with `Number()` before storing.
-- Components are flat in `src/` (one default-exported function component per file); all styles live in `App.css`.
+- Transaction shape: `{ id: Date.now(), description, amount, type: "income" | "expense", category, date: "YYYY-MM-DD" }`. `amount` is always a number — convert form input with `Number()` before storing.
+- Components are flat in `src/` (one default-exported function component per file). Component styles live in `App.css`; `index.css` holds only the global reset and body styles.
 
 ## Git
 
 - Use Conventional Commits (`feat:`, `fix:`, `refactor:`, `style:`, `chore:`).
+- `origin` is your fork; `upstream` is the course repo. Push and open PRs against `origin` only.
